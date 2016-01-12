@@ -176,7 +176,6 @@ MGRS = {
         --------------------------------
     }
 }  --end adds by JTAC mod
-
 --AWACS -> PLAYER
 
 AWACSpictureHandler = {
@@ -1130,7 +1129,7 @@ CASabortHandler = {
         toLeaderHandler         = toLeaderHandler,
         abortReason                = Phrases:new(    {    {_('You have no permission!'), 'You have no permission'},
                                                     {_('You are    attacking a wrong target!'), 'You are attacking a wrong target'},
-                                                    {_('RED on RED RED on RED!'), 'RED on RED RED on RED'} } )
+                                                    {_('BLUE ON BLUE BLUE ON BLUE!'), 'BLUE ON BLUE BLUE ON BLUE'} } )
     }
 }
 
@@ -1179,9 +1178,7 @@ handlersTable = {
 	[base.Message.wMsgAWACSHomeBearing]				= AWACSBullVectorHandler,
 	[base.Message.wMsgAWACSTankerBearing]			= AWACSBullVectorHandler,
 	[base.Message.wMsgAWACSPicture]					= AWACSpictureHandler,	
-}
-
- --Player -> JTAC    --start adds by JTAC mod
+--Player -> JTAC    --start adds by JTAC mod
     [base.Message.wMsgLeaderCheckIn]                 = CAScheckInHandler,                              ------1------ 1
     [base.Message.wMsgLeader9LineReadback]            = CASReadBackHandler,                              -----1------ 2
     [base.Message.wMsgLeaderContact]                 = CAScontactHandler,
@@ -1212,6 +1209,7 @@ handlersTable = {
     [base.Message.wMsgUseWeapon]                    = UseWeaponHandler,                                      -----2------ 7
     [base.Message.wMsgFAC_ABORT_ATTACK]             = CASabortHandler,
     [base.Message.wMsgFAC_SAM_launch]                = SAMlaunchHandler,       --end adds by JTAC mod
+}
 
 base.setmetatable(handlersTable, common.handlersTable_mt)
 
@@ -1224,11 +1222,10 @@ rangeHandlersTable = {
 	--AWACS -> PLAYER
 	{
 		range = { base.Message.wMsgAWACSNull,			base.Message.wMsgAWACSMaximum },
-		handler = AWACSToClientHandler
-	}
-}
+		handler = AWACSToClientHandler			
+	},
 
-    --PLAYER -> JTAC    --start adds by JTAC mod
+ --PLAYER -> JTAC    --start adds by JTAC mod
     {
         range = { base.Message.wMsgLeaderReadyToCopy,     base.Message.wMsgLeader9LineReadback },
         handler = EventHandler
@@ -1249,7 +1246,8 @@ rangeHandlersTable = {
     {
         range = { base.Message.wMsgFACNull,                base.Message.wMsgFACMaximum },
         handler = toLeaderHandler
-    },    --end adds by JTAC mod
+    },    --end adds by JTAC mod	
+}
 
 base.setmetatable(rangeHandlersTable, common.rangeHandlersTable_mt)
 
