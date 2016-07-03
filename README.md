@@ -1,5 +1,5 @@
 # JTACheli
-Hiermee mogelijk om JTAC te gebruiken.
+DCS World script om JTAC te gebruiken op alle toestellen.
 
 ref=http://forums.eagle.ru/showthread.php?t=93228
 
